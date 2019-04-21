@@ -9,11 +9,14 @@ const PopupWindow = (props) => {
 
     <div onClick={props.toggle} className="popUpContainer">
         <div className = "popUpWindow">
-            <p>{props.data.company}</p>
-            <p>{props.data.title}</p>
-            <p>{props.data.location}</p>
-            <p>{props.data.type}</p>
-            <div dangerouslySetInnerHTML={{ __html:props.data.how_to_apply }}/>
+            <div className="topSecFont">
+                <p className="jobCompany">{props.data.company}</p>
+                <p className="jobTitle">{props.data.title}</p>
+                <p className = "jobLocation">{props.data.location}</p>
+                <p className = "jobType">{props.data.type}</p>
+                <div className="jobType" dangerouslySetInnerHTML={{ __html:props.data.how_to_apply }}/>
+            </div>
+            
             <div className="divider"></div>
             <div dangerouslySetInnerHTML={{ __html:props.data.description }}/>
         </div>

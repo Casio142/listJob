@@ -124,16 +124,30 @@
 .popUpWindow{
   width: 90%;
   height: 90%;
-  background-color: rgb(52, 100, 202);
+  background-color: rgb(185, 185, 185);
+  border:solid 2px black;
   overflow: scroll;
   padding:20px;
   z-index: 10000000;
+  border-radius: 10px;
 }
 
+
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: rgba(255, 255, 255, 0);  /* Optional: just make scrollbar invisible */
+}
+
+.topSecFont{
+  font-size:30px;
+}
+
+
+
 .divider{
-  height: 5px;
+  height: 2.5px;
   width: 100%;
-  background-color: grey;
+  background-color: rgb(88, 88, 88);
   margin-bottom: 15px;
 
 }
@@ -225,3 +239,4 @@
   
 
 }
+
