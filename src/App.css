@@ -137,6 +137,9 @@
 
 }
 
+.marginBtm{
+  margin-bottom: 35px;
+}
 
 
 @media only screen and (min-width: 1025px) {

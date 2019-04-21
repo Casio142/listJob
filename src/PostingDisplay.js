@@ -18,7 +18,7 @@ const PostingDisplay = (props) =>{
                 </div>
             </div>
 
-            <div className="container">
+            <div className="container marginBtm">
                 <div className="row">
                     {jobPosts}
                 </div>
