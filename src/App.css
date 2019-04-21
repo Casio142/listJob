@@ -73,7 +73,6 @@
 
 .jobCard{
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: center;
   margin-top: 25px;
@@ -85,6 +84,8 @@
   -webkit-transition-property: background-color, color;
   transition-property: background-color,color;
   border-radius: 5px;
+  font-size:25px;
+
 }
 
 .cardMargin{
@@ -140,6 +141,21 @@
 .marginBtm{
   margin-bottom: 35px;
 }
+
+.jobCompany{
+  font-size:1.1em;
+}
+
+.jobTitle{
+  font-size: 0.75em;
+}
+
+.jobLocation{
+  font-size: 0.6em;
+}
+
+.jobType{
+  font-size: 0.6em;}
 
 
 @media only screen and (min-width: 1025px) {
