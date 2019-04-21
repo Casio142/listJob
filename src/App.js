@@ -48,7 +48,7 @@ class App extends Component {
       popWindowInfo: card 
 
     })
-     console.log("the job click shit");
+     console.log("the job clicck shit");
    }
 
    closePopup(){
