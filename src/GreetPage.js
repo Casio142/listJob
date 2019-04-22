@@ -9,7 +9,7 @@ const GreetPage = (props) => {
             </div>
             <div className="displayCenter">
                 <button className="moreBtn hvr-sweep-to-right btnGreeting btnSize" onClick={props.clickAction}>{props.btnLabel}</button>
-                <button className="filterBtn hvr-sweep-to-right btnGreeting btnSize" >JOB FILTER</button>
+                <button className="saveBtn hvr-sweep-to-right btnGreeting btnSize" >SAVED POSTING</button>
             </div>
         </div>
        

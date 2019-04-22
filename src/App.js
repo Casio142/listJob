@@ -51,14 +51,6 @@ class App extends Component {
      console.log("the job clicck shit");
    }
 
-   closePopup(){
-     this.setState(
-       {
-         togglePopup: false
-       }
-     )
-   }
-
    /*
    Func Name: resetListing
    Purpose: Erase all the listing that are displayed

@@ -19,6 +19,7 @@ const PopupWindow = (props) => {
             
             <div className="divider"></div>
             <div dangerouslySetInnerHTML={{ __html:props.data.description }}/>
+            <button className="addFavBtn">Add to Favorites</button>
         </div>
     </div>
 

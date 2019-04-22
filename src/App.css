@@ -42,8 +42,8 @@
   color:white;
 }
 
-.filterBtn{
-  background-color:rgb(190, 190, 26);
+.saveBtn{
+  background-color:rgb(240, 203, 82);
   color:white;
 }
 
@@ -96,14 +96,7 @@
   z-index: 1000;
 }
 
-.favBtn{
-  width: 100%;
-  border:none;
-  height: 30px;
-  color:white;
-  background-color:rgb(117, 117, 15);
-  z-index: 2;
-}
+
 
 .companyLabel{
   display:none;
@@ -142,8 +135,6 @@
   font-size:30px;
 }
 
-
-
 .divider{
   height: 2.5px;
   width: 100%;
@@ -171,6 +162,12 @@
 .jobType{
   font-size: 0.6em;}
 
+.addFavBtn{
+  width: 100%;
+  background-color: rgb(59, 153, 51);
+  height: 50px;
+  border:none;
+}
 
 @media only screen and (min-width: 1025px) {
   .jobCard:hover{

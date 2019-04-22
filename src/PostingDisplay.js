@@ -13,8 +13,8 @@ const PostingDisplay = (props) =>{
             <div className = "btnArrayContainer container">
                 <div className="row">
                     <button className="moreBtn btnSize hvr-sweep-to-right col-sm-4" onClick={props.clickAddAction}>{props.moreBtnLabel}</button>
+                    <button className="saveBtn btnSize hvr-sweep-to-right col-sm-4" >SAVED POSTINGS</button>
                     <button className="resetBtn btnSize hvr-sweep-to-right col-sm-4" onClick={props.clickResetAction}>{props.resetBtnLabel}</button>
-                    <button className="filterBtn btnSize hvr-sweep-to-right col-sm-4" >JOB FILTER</button>
                 </div>
             </div>
 
