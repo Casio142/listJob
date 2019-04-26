@@ -3,12 +3,11 @@ import React from 'react';
 
 const PopupWindow = (props) => {
 
-
-    console.log(props.data);
    return( 
 
-    <div onClick={props.toggle} className="popUpContainer">
+    <div className="popUpContainer">
         <div className = "popUpWindow">
+            <button className="popCloseBtn" onClick={props.toggle}>CLOSE</button>
             <div className="topSecFont">
                 <p className="jobCompany">{props.data.company}</p>
                 <p className="jobTitle">{props.data.title}</p>
@@ -19,7 +18,7 @@ const PopupWindow = (props) => {
             
             <div className="divider"></div>
             <div dangerouslySetInnerHTML={{ __html:props.data.description }}/>
-            <button className="addFavBtn">Add to Favorites</button>
+            <button onClick={()=>props.saveClick(props.data)} className="addFavBtn">SAVE POST</button>
         </div>
     </div>
 

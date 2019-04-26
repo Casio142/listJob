@@ -125,6 +125,17 @@
   border-radius: 10px;
 }
 
+.noSaved{
+  display:block;
+  height: 100%;
+  background-color: red;
+}
+
+.popCloseBtn{
+  border:none;
+width: 100%;
+  background-color: rgb(224, 176, 184);
+}
 
 ::-webkit-scrollbar {
   width: 0px;  /* Remove scrollbar space */
