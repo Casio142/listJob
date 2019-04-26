@@ -137,6 +137,13 @@ width: 100%;
   background-color: rgb(224, 176, 184);
 }
 
+.nav-pills{
+  position: fixed;
+  top: 0;
+  padding: 10px;
+}
+
+
 ::-webkit-scrollbar {
   width: 0px;  /* Remove scrollbar space */
   background: rgba(255, 255, 255, 0);  /* Optional: just make scrollbar invisible */

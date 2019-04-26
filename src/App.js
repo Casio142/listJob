@@ -16,13 +16,15 @@ class App extends Component {
     pageNumber: 1,
     togglePopup: false,
     saveToggle: false,
-    savedPost: []
+    savedPost: [],
+    activeNav: 1
   }
     this.addMore = this.addMore.bind(this);
     this.resetListing = this.resetListing.bind(this);
     this.jobClick = this.jobClick.bind(this);
     this.savePost = this.savePost.bind(this);
     this.displaySaved = this.displaySaved.bind(this);
+    this.navToggle = this.navToggle.bind(this);
   }
   
   /*
@@ -50,6 +52,15 @@ class App extends Component {
       })  
    }
 
+   navToggle(pill){
+      if(pill != this.state.activeNav){
+        this.setState({
+          activeNav: pill
+        })
+      }
+
+   }
+
    jobClick(card){
     this.setState({
       togglePopup: !this.state.togglePopup,
@@ -58,16 +69,11 @@ class App extends Component {
     })
    }
 
-   savePost(post){
 
-     console.log("saved the post");
-     console.log(post);
+   savePost(post){
      this.setState({
        savedPost: [...this.state.savedPost, post]
      })
-     console.log("the post is saved, array below");
-     console.log(this.state.savedPost);
-
    }
 
    displaySaved(){
@@ -92,7 +98,7 @@ class App extends Component {
    }
 
   render() {
-    const {posts,togglePopup,savePost} = this.state;
+    const {posts,togglePopup} = this.state;
     var postings = <GreetPage message="NEED A JOB?" btnLabel="CLICK TO SEE SOFTWARE JOB POSTINGS" clickAction={this.addMore} displaySaveToggle={this.displaySaved}/>;
 
     if(togglePopup){
@@ -105,9 +111,26 @@ class App extends Component {
     if(this.state.saveToggle || posts.length > 0){
         postings = <PostingDisplay displaySaveToggle={this.displaySaved} saved={this.state.savedPost} displaySave={this.state.saveToggle} jobClick={this.jobClick} posts= {posts} clickAddAction={this.addMore} clickResetAction={this.resetListing} moreBtnLabel="MORE JOB POSTINGS" resetBtnLabel="ERASE ALL LISTINGS"/>
     }
-   
+
+    console.log(this.state.activeNav);
+    console.log(this.state.togglePopup);
+    
     return (
       <div className="App">
+        <ul className=" nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li className="nav-item">
+              <a className={this.state.activeNav == 1 ? "nav-link active":"nav-link"} id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                aria-controls="pills-home" aria-selected="true" onClick = {() => this.navToggle(1)}>Job Postings</a>
+            </li>
+            <li className="nav-item">
+              <a className={this.state.activeNav == 2 ? "nav-link active":"nav-link"} id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                aria-controls="pills-profile" aria-selected="false" onClick = {() => this.navToggle(2)}>Saved Postings</a>
+            </li>
+            <li className="nav-item">
+              <a className={this.state.activeNav == 3 ? "nav-link active":"nav-link"} id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                aria-controls="pills-contact" aria-selected="false" onClick = {() => this.navToggle(3)}>Dev Job Trends</a>
+            </li>
+        </ul>
         <div className="app-shield">
           {popUp}
           {postings}
