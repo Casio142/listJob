@@ -135,7 +135,7 @@ class App extends Component {
       else{
         postings = <div className = "btnArrayContainer container">
         <div className="row">
-            <button className="moreBtn btnSize hvr-sweep-to-right col-sm-12" onClick={this.clickAddAction}>CLICK FOR JOB LISTINGS</button>
+            <button className="moreBtn btnSize hvr-sweep-to-right col-sm-12" onClick={this.addMore}>CLICK FOR JOB LISTINGS</button>
         </div>
       </div>
       }
