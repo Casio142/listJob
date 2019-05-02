@@ -12,6 +12,11 @@
   min-height: 100vh;
 }
 
+.nav{
+  z-index: 1000000;
+}
+
+
 .app-shield{
   width: 100%;
 }
@@ -52,6 +57,11 @@
   color:white;
 }
 
+.devTrendBtn{
+  background-color:rgb(65, 106, 219);
+  color:white;
+}
+
 .moreBtn-container{
   display: flex;
   justify-content: center;
@@ -65,10 +75,7 @@
 }
 
 .btnArrayContainer{
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-
+  z-index: 1000;
 }
 
 .jobCard{
@@ -91,11 +98,6 @@
 .cardMargin{
   margin: 10px 0px 10px 0px;
 }
-
-.btnArrayContainer{
-  z-index: 1000;
-}
-
 
 
 .companyLabel{
@@ -125,6 +127,32 @@
   border-radius: 10px;
 }
 
+.emptySavedList{
+  display:flex;
+  height: 100%;
+  width:100%;
+  font-size: 1.75rem;
+  justify-content: center;
+  align-items: center;
+  color: rgb(37, 103, 165);
+}
+
+.emptySavedList p {
+  margin-bottom: 0px;
+  padding: 0 20px;
+}
+
+.popCloseBtn{
+  border:none;
+  width: 100%;
+  background-color: rgb(224, 176, 184);
+}
+
+.nav-pills{
+  position: fixed;
+  top: 0;
+  padding: 10px;
+}
 
 ::-webkit-scrollbar {
   width: 0px;  /* Remove scrollbar space */
@@ -168,6 +196,13 @@
   height: 50px;
   border:none;
 }
+
+.divLine{
+  height: 5px;
+  width: 25%;
+  background-color: red;
+}
+
 
 @media only screen and (min-width: 1025px) {
   .jobCard:hover{
