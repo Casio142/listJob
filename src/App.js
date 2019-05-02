@@ -4,6 +4,7 @@ import axios from 'axios';
 import GreetPage from './GreetPage';
 import PostingDisplay from './PostingDisplay';
 import PopupWindow from './PopupWindow';
+import NavBar from './NavBar';
 
 class App extends Component {
  // <div dangerouslySetInnerHTML={{ __html: post.description }}/>
@@ -15,16 +16,19 @@ class App extends Component {
     posts: [],
     pageNumber: 1,
     togglePopup: false,
-    saveToggle: false,
+    displaySaveToggle: false,
     savedPost: [],
-    activeNav: 1
+    activeNav: 0,
+    loading: false
   }
     this.addMore = this.addMore.bind(this);
     this.resetListing = this.resetListing.bind(this);
-    this.jobClick = this.jobClick.bind(this);
+    this.expandPostCard = this.expandPostCard.bind(this);
     this.savePost = this.savePost.bind(this);
     this.displaySaved = this.displaySaved.bind(this);
     this.navToggle = this.navToggle.bind(this);
+    this.loadingScreen = this.loadingScreen.bind(this);
+    this.displayJobPill = this.displayJobPill.bind(this);
   }
   
   /*
@@ -32,43 +36,57 @@ class App extends Component {
    Purpose: Retrieve all the job listings with no filter from the API
    */
    addMore(){
-    if(this.state.saveToggle === true){
+    if(this.state.displaySaveToggle === true){
       this.displaySaved();
     }
 
+
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = proxyurl + "//jobs.github.com/positions.json?page="+this.state.pageNumber+"&utf8=%E2%9C%93&description=&location=";
-    axios.get(url, {onDownloadProgress: function(){
-    }}) 
+    axios.get(url,this.loadingScreen()) 
       .then(res => {
         this.setState(
           {
             posts : [...this.state.posts,...res.data],
             pageNumber : this.state.pageNumber + 1,
             togglePopup : false,
-            popWindowInfo: null
-          }
+            popWindowInfo: null,
+            loading: !this.state.loading
+                    }
         )
       })  
    }
 
-   navToggle(pill){
+   loadingScreen(){
+     this.setState({
+       loading: !this.state.loading,
+       activeNav:1
+     })
+
+   }
+
+   navToggle(pill, action){
       if(pill != this.state.activeNav){
         this.setState({
           activeNav: pill
         })
+        action();
       }
-
    }
 
-   jobClick(card){
+   displayJobPill(){
+     this.setState({
+       displaySaveToggle: !this.state.displaySaveToggle
+     })
+   }
+
+   expandPostCard(card){
     this.setState({
       togglePopup: !this.state.togglePopup,
       popWindowInfo: card 
 
     })
    }
-
 
    savePost(post){
      this.setState({
@@ -79,9 +97,10 @@ class App extends Component {
    displaySaved(){
      this.setState(
        {
-         saveToggle: !this.state.saveToggle
+         displaySaveToggle: !this.state.displaySaveToggle
        }
      )
+  
    }
 
    /*
@@ -92,48 +111,54 @@ class App extends Component {
      this.setState(
        {
          posts: [],
-         pageNumber: 1
-       }
+         pageNumber: 1,
+         displaySaveToggle: false       }
      )
    }
 
   render() {
     const {posts,togglePopup} = this.state;
-    var postings = <GreetPage message="NEED A JOB?" btnLabel="CLICK TO SEE SOFTWARE JOB POSTINGS" clickAction={this.addMore} displaySaveToggle={this.displaySaved}/>;
+    var postings = <GreetPage message="NEED A JOB?" btnLabel="CLICK TO SEE SOFTWARE JOB POSTINGS" displayPost={() => this.navToggle(1, this.addMore)} displaySaveToggle={() => this.navToggle(2,this.displaySaved)}/>;
+    var navDisplay = null;
+    var popUp = null;
+    var loading = null;
+
+    //display the nav bar in certain instances
+    if(this.state.activeNav != 0){
+      navDisplay =  <NavBar navStatus={this.state.activeNav} expandPostCard={() => this.navToggle(1, this.displayJobPill)} saveClick = {() => this.navToggle(2,this.displaySaved)} trendClick ={() => this.navToggle(2,this.displaySaved)}/>
+    }
+
+    if(this.state.activeNav === 1){
+      if(posts.length > 0){
+        postings = <PostingDisplay displaySaveToggle={this.displaySaved} saved={this.state.savedPost} displaySave={this.state.displaySaveToggle} expandPostCard={this.expandPostCard} posts= {posts} clickAddAction={this.addMore} clickResetAction={this.resetListing} moreBtnLabel="MORE JOB POSTINGS" resetBtnLabel="ERASE ALL LISTINGS"/>
+      }
+      else{
+        postings = <div className = "btnArrayContainer container">
+        <div className="row">
+            <button className="moreBtn btnSize hvr-sweep-to-right col-sm-12" onClick={this.clickAddAction}>CLICK FOR JOB LISTINGS</button>
+        </div>
+      </div>
+      }
+    }
+
+    else if(this.state.activeNav === 2){
+      postings = <PostingDisplay displaySaveToggle={this.displaySaved} saved={this.state.savedPost} displaySave={this.state.displaySaveToggle} expandPostCard={this.expandPostCard} posts= {posts} clickAddAction={this.addMore} clickResetAction={this.resetListing} moreBtnLabel="MORE JOB POSTINGS" resetBtnLabel="ERASE ALL LISTINGS"/>
+    }
 
     if(togglePopup){
-      var popUp = <PopupWindow saveClick={this.savePost} toggle={this.jobClick} data = {this.state.popWindowInfo}/>
-    }
-    else{
-      popUp = null;
+      var popUp = <PopupWindow saveClick={this.savePost} toggle={this.expandPostCard} data = {this.state.popWindowInfo}/>
     }
 
-    if(this.state.saveToggle || posts.length > 0){
-        postings = <PostingDisplay displaySaveToggle={this.displaySaved} saved={this.state.savedPost} displaySave={this.state.saveToggle} jobClick={this.jobClick} posts= {posts} clickAddAction={this.addMore} clickResetAction={this.resetListing} moreBtnLabel="MORE JOB POSTINGS" resetBtnLabel="ERASE ALL LISTINGS"/>
-    }
 
-    console.log(this.state.activeNav);
-    console.log(this.state.togglePopup);
-    
     return (
       <div className="App">
-        <ul className=" nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li className="nav-item">
-              <a className={this.state.activeNav == 1 ? "nav-link active":"nav-link"} id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                aria-controls="pills-home" aria-selected="true" onClick = {() => this.navToggle(1)}>Job Postings</a>
-            </li>
-            <li className="nav-item">
-              <a className={this.state.activeNav == 2 ? "nav-link active":"nav-link"} id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                aria-controls="pills-profile" aria-selected="false" onClick = {() => this.navToggle(2)}>Saved Postings</a>
-            </li>
-            <li className="nav-item">
-              <a className={this.state.activeNav == 3 ? "nav-link active":"nav-link"} id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
-                aria-controls="pills-contact" aria-selected="false" onClick = {() => this.navToggle(3)}>Dev Job Trends</a>
-            </li>
-        </ul>
+
+          {navDisplay}        
         <div className="app-shield">
+          {loading}
           {popUp}
           {postings}
+          
         </div>  
       </div>
     );
