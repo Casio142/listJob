@@ -1,6 +1,7 @@
 import React from 'react';
 import JobCard from './JobCard';
 
+
 const PostingDisplay = (props) =>{
 
     var jobPosts = null;
@@ -14,7 +15,6 @@ const PostingDisplay = (props) =>{
 
     /* Check to display the saved listings */
     if(props.displaySave){
-
 
         if(props.saved.length > 0){
            jobPosts = props.saved.map(post =>{

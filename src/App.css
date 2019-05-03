@@ -12,10 +12,42 @@
   min-height: 100vh;
 }
 
+
+/*
+Navigation Styling
+*/
 .nav{
-  z-index: 1000000;
+  z-index: 10;
 }
 
+.non-active{
+  border: solid 2px #007bff;
+  background-color: white;
+}
+
+.active {
+  border: solid 2px #007bff;
+}
+
+.nav-item{
+  margin: 0px 10px;
+}
+
+.nav-pills{
+  position: fixed;
+  top: 0;
+  padding: 10px;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.753);
+}
+
+.row{
+  margin-top: 40px;
+}
+
+/*
+  Other styling that has to be labeled
+*/
 
 .app-shield{
   width: 100%;
@@ -110,7 +142,7 @@
   position: fixed;
   top:0;
   left: 0;
-  z-index: 99999;
+  z-index:  99999999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,7 +155,7 @@
   border:solid 2px black;
   overflow: scroll;
   padding:20px;
-  z-index: 10000000;
+  z-index: 999999999;
   border-radius: 10px;
 }
 
@@ -143,16 +175,13 @@
 }
 
 .popCloseBtn{
+  position: fixed;
+  
   border:none;
   width: 100%;
   background-color: rgb(224, 176, 184);
 }
 
-.nav-pills{
-  position: fixed;
-  top: 0;
-  padding: 10px;
-}
 
 ::-webkit-scrollbar {
   width: 0px;  /* Remove scrollbar space */
@@ -190,12 +219,16 @@
 .jobType{
   font-size: 0.6em;}
 
+
 .addFavBtn{
   width: 100%;
   background-color: rgb(59, 153, 51);
   height: 50px;
   border:none;
 }
+
+
+
 
 .divLine{
   height: 5px;

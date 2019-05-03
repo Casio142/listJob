@@ -39,8 +39,6 @@ class App extends Component {
     if(this.state.displaySaveToggle === true){
       this.displaySaved();
     }
-
-
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = proxyurl + "//jobs.github.com/positions.json?page="+this.state.pageNumber+"&utf8=%E2%9C%93&description=&location=";
     axios.get(url,this.loadingScreen()) 
@@ -65,12 +63,13 @@ class App extends Component {
 
    }
 
-   navToggle(pill, action){
+   navToggle(pill, action = null){
       if(pill != this.state.activeNav){
         this.setState({
           activeNav: pill
         })
-        action();
+        if(action != null){
+        action();}
       }
    }
 
@@ -118,7 +117,7 @@ class App extends Component {
 
   render() {
     const {posts,togglePopup} = this.state;
-    var postings = <GreetPage message="NEED A JOB?" btnLabel="CLICK TO SEE SOFTWARE JOB POSTINGS" displayPost={() => this.navToggle(1, this.addMore)} displaySaveToggle={() => this.navToggle(2,this.displaySaved)}/>;
+    var postings = <GreetPage message="NEED A JOB?" btnLabel="CLICK TO SEE SOFTWARE JOB POSTINGS" displayPost={() => this.navToggle(1)} displaySaveToggle={() => this.navToggle(2,this.displaySaved)}/>;
     var navDisplay = null;
     var popUp = null;
     var loading = null;
