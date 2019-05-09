@@ -8,8 +8,9 @@ const PostingDisplay = (props) =>{
 
     var btnContainer = <div className = "btnArrayContainer container">
                         <div className="row">
-                            <button className="moreBtn btnSize hvr-sweep-to-right col-sm-6" onClick={props.clickAddAction}>{props.moreBtnLabel}</button>
-                            <button className="resetBtn btnSize hvr-sweep-to-right col-sm-6" onClick={props.clickResetAction}>{props.resetBtnLabel}</button>
+                            <button className="moreBtn btnSize hvr-sweep-to-right col-sm-12" onClick={props.clickAddAction}>{props.loading? <div class="spinner-border text-light" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div> :props.moreBtnLabel}</button>
                         </div>
                     </div>
 

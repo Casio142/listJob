@@ -41,6 +41,12 @@ Navigation Styling
   background-color: rgba(128, 128, 128, 0.753);
 }
 
+.resetNav{
+  background-color: rgb(219, 16, 16);
+  border: solid 2px rgb(219, 16, 16);
+  color:white;
+}
+
 .row{
   margin-top: 40px;
 }
@@ -142,7 +148,7 @@ Navigation Styling
   position: fixed;
   top:0;
   left: 0;
-  z-index:  99999999;
+  z-index:  10000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -157,6 +163,7 @@ Navigation Styling
   padding:20px;
   z-index: 999999999;
   border-radius: 10px;
+  padding-bottom:70px;
 }
 
 .emptySavedList{
@@ -176,10 +183,13 @@ Navigation Styling
 
 .popCloseBtn{
   position: fixed;
-  
+  bottom: 7%;
+  left: 0;
   border:none;
   width: 100%;
-  background-color: rgb(224, 176, 184);
+  height: 6%;
+  color: white;
+  background-color: rgba(255, 0, 43, 0.87);
 }
 
 
@@ -227,6 +237,15 @@ Navigation Styling
   border:none;
 }
 
+.activeSaved{
+  width: 100%;
+  background-color: rgba(59, 153, 51, 0.5);
+  height: 50px;
+  color: white;
+  
+  border:none;
+}
+
 
 
 
@@ -236,6 +255,14 @@ Navigation Styling
   background-color: red;
 }
 
+@media only screen and (max-height: 680px){
+
+  .popCloseBtn{
+    height: 7.5% !important;
+    
+  }
+
+}
 
 @media only screen and (min-width: 1025px) {
   .jobCard:hover{
@@ -301,6 +328,44 @@ Navigation Styling
     transform: scaleX(1);
   }
   
+  /* Push */
+@-webkit-keyframes hvr-push {
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes hvr-push {
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.hvr-push {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.hvr-push:active {
+  -webkit-animation-name: hvr-push;
+  animation-name: hvr-push;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
   
 
 }

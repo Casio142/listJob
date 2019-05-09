@@ -11,16 +11,28 @@ const NavBar = (props) =>{
                 aria-controls="pills-contact" aria-selected="false" onClick = {props.trendClick}>Dev Job Trends</a>
             </li>
             */
+
+            /*
+            THE SAVED FEATURE
+
+            <li className="nav-item">
+              <a className={props.navStatus === 2 ? "nav-link active":"nav-link non-active"} id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                aria-controls="pills-profile" aria-selected="false" onClick = {props.saveClick}>Saved Postings</a>
+            </li>
+            */
+            
     return(
         <ul className=" nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li className="nav-item">
-              <a className={props.navStatus == 1 ? "nav-link active":"nav-link non-active"} id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                aria-controls="pills-home" aria-selected="true" onClick = {props.expandPostCard}>Job Postings</a>
+              <a className={props.navStatus === 1 ? "nav-link active":"nav-link non-active"} id="pills-home-tab" data-toggle="pill" href="#JobPosting" role="tab"
+                aria-controls="pills-home" aria-selected="true">Job Postings</a>
             </li>
+
             <li className="nav-item">
-              <a className={props.navStatus == 2 ? "nav-link active":"nav-link non-active"} id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                aria-controls="pills-profile" aria-selected="false" onClick = {props.saveClick}>Saved Postings</a>
+              <a className={"nav-link resetNav hvr-grow"} id="pills-profile-tab" data-toggle="pill" href="#JobPosting" role="tab"
+                aria-controls="pills-profile" aria-selected="false" onClick = {props.resetClick}>Erase Postings</a>
             </li>
+            
             
         </ul>
     )

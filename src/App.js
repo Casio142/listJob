@@ -36,9 +36,6 @@ class App extends Component {
    Purpose: Retrieve all the job listings with no filter from the API
    */
    addMore(){
-    if(this.state.displaySaveToggle === true){
-      this.displaySaved();
-    }
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = proxyurl + "//jobs.github.com/positions.json?page="+this.state.pageNumber+"&utf8=%E2%9C%93&description=&location=";
     axios.get(url,this.loadingScreen()) 
@@ -64,13 +61,12 @@ class App extends Component {
    }
 
    navToggle(pill, action = null){
-      if(pill != this.state.activeNav){
+      if(pill !== this.state.activeNav){
         this.setState({
           activeNav: pill
         })
-        if(action != null){
-        action();}
       }
+      action();
    }
 
    displayJobPill(){
@@ -117,35 +113,18 @@ class App extends Component {
 
   render() {
     const {posts,togglePopup} = this.state;
-    var postings = <GreetPage message="NEED A JOB?" btnLabel="CLICK TO SEE SOFTWARE JOB POSTINGS" displayPost={() => this.navToggle(1)} displaySaveToggle={() => this.navToggle(2,this.displaySaved)}/>;
+    var postings = <GreetPage message="NEED A JOB?" btnLabel="CLICK TO SEE SOFTWARE JOB POSTINGS" displayPost={() => this.navToggle(1,this.addMore)} loading={this.state.loading}/>;
     var navDisplay = null;
     var popUp = null;
     var loading = null;
 
-    //display the nav bar in certain instances
-    if(this.state.activeNav != 0){
-      navDisplay =  <NavBar navStatus={this.state.activeNav} expandPostCard={() => this.navToggle(1, this.displayJobPill)} saveClick = {() => this.navToggle(2,this.displaySaved)} trendClick ={() => this.navToggle(2,this.displaySaved)}/>
-    }
-
-    if(this.state.activeNav === 1){
-      if(posts.length > 0){
-        postings = <PostingDisplay displaySaveToggle={this.displaySaved} saved={this.state.savedPost} displaySave={this.state.displaySaveToggle} expandPostCard={this.expandPostCard} posts= {posts} clickAddAction={this.addMore} clickResetAction={this.resetListing} moreBtnLabel="MORE JOB POSTINGS" resetBtnLabel="ERASE ALL LISTINGS"/>
-      }
-      else{
-        postings = <div className = "btnArrayContainer container">
-        <div className="row">
-            <button className="moreBtn btnSize hvr-sweep-to-right col-sm-12" onClick={this.addMore}>CLICK FOR JOB LISTINGS</button>
-        </div>
-      </div>
-      }
-    }
-
-    else if(this.state.activeNav === 2){
-      postings = <PostingDisplay displaySaveToggle={this.displaySaved} saved={this.state.savedPost} displaySave={this.state.displaySaveToggle} expandPostCard={this.expandPostCard} posts= {posts} clickAddAction={this.addMore} clickResetAction={this.resetListing} moreBtnLabel="MORE JOB POSTINGS" resetBtnLabel="ERASE ALL LISTINGS"/>
+    if(this.state.posts.length > 0){
+      navDisplay =  <NavBar navStatus={this.state.activeNav} expandPostCard={() => this.navToggle(1, this.displayJobPill)} resetClick = {() => this.navToggle(1,this.resetListing)} />
+      postings = <PostingDisplay displaySaveToggle={this.displaySaved} saved={this.state.savedPost} displaySave={this.state.displaySaveToggle} expandPostCard={this.expandPostCard} loading={this.state.loading} posts= {posts} clickAddAction={this.addMore} clickResetAction={this.resetListing} moreBtnLabel="MORE JOB POSTINGS" resetBtnLabel="ERASE ALL LISTINGS"/>
     }
 
     if(togglePopup){
-      var popUp = <PopupWindow saveClick={this.savePost} toggle={this.expandPostCard} data = {this.state.popWindowInfo}/>
+       popUp = <PopupWindow saveClick={this.savePost} toggle={this.expandPostCard} data = {this.state.popWindowInfo}/>
     }
 
 
