@@ -8,12 +8,14 @@
 
 body{
   background-color: white;
+  overflow: scroll;
 }
 
 .App{
   display:flex;
   align-items: center;
   min-height: 100vh;
+  overflow: scroll;
 }
 
 
@@ -240,7 +242,6 @@ Navigation Styling
 
 }
 
-
 .addFavBtn{
   width: 100%;
   background-color: rgb(59, 153, 51);
@@ -263,8 +264,6 @@ Navigation Styling
   background-color: red;
 }
 
-
-
 @media only screen and (max-height: 680px){
 
   .popCloseBtn{
@@ -273,7 +272,6 @@ Navigation Styling
   }
 
 }
-
 
 @media only screen and (max-height: 740px){
 

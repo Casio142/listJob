@@ -76,6 +76,14 @@ class App extends Component {
    }
 
    expandPostCard(card){
+
+    if(this.state.togglePopup === false){
+      document.getElementById("body").style.overflow = "hidden"; }
+    else{
+      document.getElementById("body").style.overflow = "scroll"; 
+    }
+    
+
     this.setState({
       togglePopup: !this.state.togglePopup,
       popWindowInfo: card 
