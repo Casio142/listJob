@@ -137,7 +137,6 @@ Navigation Styling
   margin: 10px 0px 10px 0px;
 }
 
-
 .companyLabel{
   display:none;
 }
@@ -192,7 +191,6 @@ Navigation Styling
   background-color: rgba(255, 0, 43, 0.87);
 }
 
-
 ::-webkit-scrollbar {
   width: 0px;  /* Remove scrollbar space */
   background: rgba(255, 255, 255, 0);  /* Optional: just make scrollbar invisible */
@@ -246,9 +244,6 @@ Navigation Styling
   border:none;
 }
 
-
-
-
 .divLine{
   height: 5px;
   width: 25%;
@@ -260,6 +255,14 @@ Navigation Styling
   .popCloseBtn{
     height: 7.5% !important;
     
+  }
+
+}
+
+@media only screen and (max-height: 740px){
+
+  .postNotShown p {
+    font-size: 3rem;
   }
 
 }

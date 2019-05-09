@@ -113,7 +113,7 @@ class App extends Component {
 
   render() {
     const {posts,togglePopup} = this.state;
-    var postings = <GreetPage message="NEED A JOB?" btnLabel="CLICK TO SEE SOFTWARE JOB POSTINGS" displayPost={() => this.navToggle(1,this.addMore)} loading={this.state.loading}/>;
+    var postings = <GreetPage message="NEED A JOB?" btnLabel="Load Job Posting" displayPost={() => this.navToggle(1,this.addMore)} loading={this.state.loading}/>;
     var navDisplay = null;
     var popUp = null;
     var loading = null;
