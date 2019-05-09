@@ -6,6 +6,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
+body{
+  background-color: white;
+}
+
 .App{
   display:flex;
   align-items: center;
@@ -122,8 +126,9 @@ Navigation Styling
   justify-content: center;
   margin-top: 25px;
   height: 100%;
-  background-color:rgba(109, 109, 109, 0.472);
+  background-color:rgb(106, 173, 228);
   z-index: -2;
+  color:black !important;
   -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
   -webkit-transition-property: background-color, color;
@@ -156,8 +161,8 @@ Navigation Styling
 .popUpWindow{
   width: 90%;
   height: 90%;
-  background-color: rgb(185, 185, 185);
-  border:solid 2px black;
+  background-color: rgb(171, 210, 241);
+  border:solid 2px rgb(0, 100, 182);
   overflow: scroll;
   padding:20px;
   z-index: 999999999;
@@ -214,6 +219,11 @@ Navigation Styling
 
 .jobCompany{
   font-size:1.1em;
+  color: white;
+}
+
+.jobCompanyCard{
+  text-decoration: underline;
 }
 
 .jobTitle{
@@ -225,7 +235,10 @@ Navigation Styling
 }
 
 .jobType{
-  font-size: 0.6em;}
+  font-size: 0.6em;
+  
+
+}
 
 
 .addFavBtn{
@@ -250,6 +263,8 @@ Navigation Styling
   background-color: red;
 }
 
+
+
 @media only screen and (max-height: 680px){
 
   .popCloseBtn{
@@ -258,6 +273,7 @@ Navigation Styling
   }
 
 }
+
 
 @media only screen and (max-height: 740px){
 

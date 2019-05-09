@@ -32,7 +32,7 @@ render(){
         <div className = "popUpWindow">
             <button className="popCloseBtn" onClick={this.props.toggle}>CLOSE</button>
             <div className="topSecFont">
-                <p className="jobCompany">{this.props.data.company}</p>
+                <p className="jobCompanyCard">{this.props.data.company}</p>
                 <p className="jobTitle">{this.props.data.title}</p>
                 <p className = "jobLocation">{this.props.data.location}</p>
                 <p className = "jobType">{this.props.data.type}</p>
