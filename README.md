@@ -1,6 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-NPM IS NEEDED
+1) NPM IS NEEDED
+2) DO "NPM INSTALL" for all dependencies needed 
 
 PROJECT -- I NEED A JOB --
 
