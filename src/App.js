@@ -77,18 +77,22 @@ class App extends Component {
 
    expandPostCard(card){
 
-    if(this.state.togglePopup === false){
-      document.getElementById("body").style.overflow = "hidden"; }
-    else{
-      document.getElementById("body").style.overflow = "scroll"; 
-    }
-    
-
     this.setState({
       togglePopup: !this.state.togglePopup,
       popWindowInfo: card 
 
     })
+    
+    if(this.state.togglePopup === false){
+      console.log("the change");
+      document.getElementById('body').style.overflowY = "hidden"; }
+    else{
+      console.log("the scroll");
+      document.getElementById('body').style.overflowY= "scroll"; 
+    }
+
+
+
    }
 
    savePost(post){

@@ -6,17 +6,21 @@
   font-family: 'Poppins', sans-serif;
 }
 
+
+
 body{
   background-color: white;
-  overflow: scroll;
 }
 
 .App{
   display:flex;
   align-items: center;
   min-height: 100vh;
-  overflow: scroll;
 }
+/*
+Get rid of the outline when button clicked
+*/
+button:focus {outline:0;}
 
 
 /*
