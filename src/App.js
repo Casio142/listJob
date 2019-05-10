@@ -85,10 +85,16 @@ class App extends Component {
     
     if(this.state.togglePopup === false){
       console.log("the change");
-      document.getElementById('body').style.overflowY = "hidden"; }
+      document.getElementById('body').style.overflowY = "hidden";
+      document.getElementById('html').style.overflow = "hidden";
+
+
+     }
     else{
       console.log("the scroll");
       document.getElementById('body').style.overflowY= "scroll"; 
+      document.getElementById('html').style.overflow = "scroll";
+
     }
 
 
