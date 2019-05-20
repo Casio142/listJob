@@ -46,18 +46,19 @@ class App extends Component {
             pageNumber : this.state.pageNumber + 1,
             togglePopup : false,
             popWindowInfo: null,
-            loading: !this.state.loading
+            loading: false
                     }
         )
       })  
    }
 
    loadingScreen(){
-     this.setState({
-       loading: !this.state.loading,
-       activeNav:1
-     })
-
+     if(this.state.loading === false){
+      this.setState({
+        loading: true,
+        activeNav:1,
+      })
+    }
    }
 
    navToggle(pill, action = null){
@@ -84,14 +85,12 @@ class App extends Component {
     })
     
     if(this.state.togglePopup === false){
-      console.log("the change");
       document.getElementById('body').style.overflowY = "hidden";
       document.getElementById('html').style.overflow = "hidden";
 
 
      }
     else{
-      console.log("the scroll");
       document.getElementById('body').style.overflowY= "scroll"; 
       document.getElementById('html').style.overflow = "scroll";
 
